@@ -1,0 +1,29 @@
+const int LED = D7;
+
+void setup() {
+	pinMode(LED, OUTPUT);
+}
+
+void longBlink() {
+    digitalWrite(LED, HIGH);
+	delay(1000);
+	digitalWrite(LED, LOW);
+	delay(600);
+}
+
+void shortBlink() {
+    digitalWrite(LED, HIGH);
+	delay(300);
+	digitalWrite(LED, LOW);
+	delay(600);
+}
+
+void loop() {
+    
+    int sequence[16] = {0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,1}; // Using 1 for long and 0 for short blink
+    
+    for(int i = 0; i < 16; i++) {
+        if(sequence[i] == 0) shortBlink();
+        else longBlink();
+    }
+}
